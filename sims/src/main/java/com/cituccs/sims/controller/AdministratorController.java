@@ -29,7 +29,7 @@ public class AdministratorController {
 	}
 	
 	@PostMapping("/postAdministrator")
-	public AdministratorEntity insertAdministrator(@RequestBody AdministratorEntity administrator) {
+	public AdministratorEntity insertAdministrator(@RequestBody AdministratorEntity administrator) throws Exception {
 		return aserv.insertAdministrator(administrator);
 	}
 	
