@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 //import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,21 +22,22 @@ public class GuidepostEntity {
 	
 	private String title;
 	private String content;
-//	private String photo;
+	private String photo;
 	private boolean isdeleted;
 	
-	public GuidepostEntity() {}
+	@ManyToOne
+	@JoinColumn(name="username")
+	UserEntity user;
 	
-	//@ManyToOne(cascade = CascadeType.MERGE)
-	//private Set<UserEntity> username;
+	public GuidepostEntity() {}
 
-	public GuidepostEntity(int guidepostid, String title, String content, boolean isdeleted /*, Set<UserEntity> username*/) {
+	public GuidepostEntity(int guidepostid, String title, String content, String photo, boolean isdeleted, UserEntity user) {
 		super();
 		this.guidepostid = guidepostid;
 		this.title = title;
 		this.content = content;
 		this.isdeleted = isdeleted;
-		//this.username = username;
+		this.user = user;
 	}
 
 
@@ -71,12 +74,21 @@ public class GuidepostEntity {
 		this.isdeleted = isdeleted;
 	}
 
-	//public Set<UserEntity> getUser() {
-	//	return username;
-	//}
+	public String getPhoto() {
+		return photo;
+	}
 
-	//public void setUser(Set<UserEntity> username) {
-	//	this.username = username;
-	//}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
 
 }

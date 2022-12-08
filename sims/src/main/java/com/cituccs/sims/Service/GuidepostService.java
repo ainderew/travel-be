@@ -34,6 +34,10 @@ public class GuidepostService {
 			return null;
 	}
 	
+	public GuidepostEntity findById(int guidepostid) { 
+		return grepo.findById(guidepostid).get();
+	}
+	
 	//update
 	public GuidepostEntity putGuidepost(int guidepostid, GuidepostEntity newGuidepostDetails) throws Exception{
 		GuidepostEntity guidepost = new GuidepostEntity();
@@ -44,7 +48,7 @@ public class GuidepostService {
 			//update
 			guidepost.setTitle(newGuidepostDetails.getTitle());
 			guidepost.setContent(newGuidepostDetails.getContent());
-			guidepost.setIsdeleted(newGuidepostDetails.getIsdeleted());
+			guidepost.setPhoto(newGuidepostDetails.getPhoto());
 			
 			//save and return the value
 			return grepo.save(guidepost);

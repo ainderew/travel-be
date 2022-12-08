@@ -38,6 +38,11 @@ public class GuidepostController {
 		return gpserv.getAllGuidepost();
 	}
 	
+	@GetMapping("/getGuidepost")
+	public GuidepostEntity findById(@RequestParam int guidepostid) { 
+		return gpserv.findById(guidepostid);
+	}
+	
 	//read by title
 	@GetMapping("/getByTitle")
 	public GuidepostEntity findByTitle(@RequestParam String title) {
