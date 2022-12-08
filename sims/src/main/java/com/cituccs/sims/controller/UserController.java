@@ -62,21 +62,22 @@ public class UserController {
 		return userv.findByUsername(username);
 	}
 
-	@GetMapping("/loginUser")
-	public Boolean loginUser(@RequestBody UserEntity user){
+	@PostMapping("/loginUser")
+	public UserEntity loginUser(@RequestBody UserEntity user){
 		UserEntity rUser = userv.getUser(user);
 		
 		String inputPassword = user.getPassword();
 		
 		String dbPassword = rUser.getPassword();
-
-		if(dbPassword.equals(inputPassword)){
-			return true;
-		}else{
-//			return "inputPassword: " + inputPassword +" dbPassword: " + dbPassword ;
-			return false;
-				
+		
+		
+		if(!dbPassword.equals(inputPassword)){
+			throw new Error("NO USER");
 		}
+		
+			
+		return rUser;
+	
 
 	}
 
