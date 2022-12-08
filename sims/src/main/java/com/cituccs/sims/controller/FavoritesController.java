@@ -3,6 +3,7 @@ package com.cituccs.sims.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import com.cituccs.sims.Entity.UserEntity;
 import com.cituccs.sims.Service.FavoritesService;
 import com.cituccs.sims.Service.UserService;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/favorites")
 public class FavoritesController {

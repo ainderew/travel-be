@@ -13,6 +13,7 @@ public class UserEntity {
 	private String username;
 	
 	private String password;
+//	private String avatar;
 	private String name;
 	private String phoneNumber;
 	private String email;

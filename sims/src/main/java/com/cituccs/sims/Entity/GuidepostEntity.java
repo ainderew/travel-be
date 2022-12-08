@@ -20,6 +20,7 @@ public class GuidepostEntity {
 	
 	private String title;
 	private String content;
+//	private String photo;
 	private boolean isdeleted;
 	
 	public GuidepostEntity() {}
