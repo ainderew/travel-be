@@ -11,7 +11,6 @@ public class UserEntity {
 	
 	@Id
 	private String username;
-	
 	private String password;
 //	private String avatar;
 	private String name;
