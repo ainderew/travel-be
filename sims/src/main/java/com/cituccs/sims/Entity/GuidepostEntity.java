@@ -24,6 +24,7 @@ public class GuidepostEntity {
 	private String content;
 	private String photo;
 	private boolean isdeleted;
+	private String location;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
@@ -31,13 +32,14 @@ public class GuidepostEntity {
 	
 	public GuidepostEntity() {}
 
-	public GuidepostEntity(int guidepostid, String title, String content, String photo, boolean isdeleted, UserEntity user) {
+	public GuidepostEntity(int guidepostid, String title, String content, String photo, boolean isdeleted, UserEntity user, String location) {
 		super();
 		this.guidepostid = guidepostid;
 		this.title = title;
 		this.content = content;
 		this.isdeleted = isdeleted;
 		this.user = user;
+		this.location = location
 	}
 
 
@@ -90,5 +92,12 @@ public class GuidepostEntity {
 		this.user = user;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 }
