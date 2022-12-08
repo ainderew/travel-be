@@ -12,7 +12,7 @@ public class UserEntity {
 	@Id
 	private String username;
 	private String password;
-//	private String avatar;
+	private String profileImage;
 	private String name;
 	private String phoneNumber;
 	private String email;
@@ -23,7 +23,7 @@ public class UserEntity {
 
 
 	public UserEntity(String username, String password, String name, String phoneNumber, String email,
-			boolean isBanned) {
+			boolean isBanned, String profileImage) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -31,6 +31,7 @@ public class UserEntity {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.isBanned = isBanned;
+		this.profileImage = profileImage;
 	}
 
 
@@ -91,6 +92,14 @@ public class UserEntity {
 
 	public void setBanned(boolean isBanned) {
 		this.isBanned = isBanned;
+	}
+	
+	public String getProfileImage() {
+		return profileImage;
+	}
+	
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 	
 }
