@@ -37,6 +37,14 @@ public class GuidepostService {
 	public GuidepostEntity findById(int guidepostid) { 
 		return grepo.findById(guidepostid).get();
 	}
+
+	public List<GuidepostEntity> findAllGuides(){
+		return grepo.findAllGuides();
+	}
+	
+	public List<GuidepostEntity> findSimilarTitle(String title){
+		return grepo.findByLikeTitle(title);
+	}
 	
 	//update
 	public GuidepostEntity putGuidepost(int guidepostid, GuidepostEntity newGuidepostDetails) throws Exception{

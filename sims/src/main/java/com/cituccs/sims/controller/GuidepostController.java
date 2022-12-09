@@ -38,6 +38,17 @@ public class GuidepostController {
 		return gpserv.getAllGuidepost();
 	}
 	
+	//native query andrew mga pre ni don't delete
+	@GetMapping("/findAllGuides")
+	public List<GuidepostEntity> findAllGuides(){
+		return gpserv.findAllGuides();
+	}
+	//native query andrew mga pre ni don't delete
+	@GetMapping("/findLikeTitle")
+	public List<GuidepostEntity> findLikeTitle(@RequestParam String title){
+		return gpserv.findSimilarTitle(title);
+	}
+	
 	@GetMapping("/getGuidepost")
 	public GuidepostEntity findById(@RequestParam int guidepostid) { 
 		return gpserv.findById(guidepostid);

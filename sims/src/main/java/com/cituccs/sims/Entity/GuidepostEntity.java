@@ -38,11 +38,9 @@ public class GuidepostEntity {
 		this.title = title;
 		this.content = content;
 		this.isdeleted = isdeleted;
+		this.location = location;
 		this.user = user;
-		this.location = location
 	}
-
-
 
 	public int getGuidepostid() {
 		return guidepostid;

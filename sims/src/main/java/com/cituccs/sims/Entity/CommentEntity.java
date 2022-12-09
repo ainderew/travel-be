@@ -16,38 +16,32 @@ public class CommentEntity {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int commentId;
 	private String comment;
-	private String test;
-//	private GuidepostEntity guidepost;
 
 	
 //Connect when we have guidePost entity
 	
-//	@ManyToOne
-//	@JoinColumn(name="id")
-//	GuidepostEntity guidepost;
+	@ManyToOne
+	@JoinColumn(name="username")
+	UserEntity user;
 	
-//	@ManyToOne
-//	@JoinColumn(name="id")
-//	UserEntity user;
+	@ManyToOne
+	@JoinColumn(name="guidepostId")
+	GuidepostEntity guidepost;
 
 	public CommentEntity(){}
 
 
-	public CommentEntity(int commentId, String comment, String test) {
+	public CommentEntity(int commentId, String comment, String test, UserEntity user, GuidepostEntity guidepost) {
 		super();
 		this.commentId = commentId;
 		this.comment = comment;
-		this.test = test;
+		this.user = user;
+		this.guidepost = guidepost;
 	}
 
 
 	public int getCommentId() {
 		return commentId;
-	}
-
-
-	public void setTest(String test) {
-		this.test = test;
 	}
 
 	
@@ -56,15 +50,25 @@ public class CommentEntity {
 	}
 
 
-	public void setComment(String description) {
-		this.comment = description;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 
+	public UserEntity getUser() {
+		return user;
+	}
 
-	@Override
-	public String toString() {
-		return "CommentEntity [commentID:" + commentId + ", comment:" + comment +"]";
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+	
+	public GuidepostEntity getGuidePost() {
+		return guidepost;
+	}
+
+	public void setGuidepost(GuidepostEntity guidepost) {
+		this.guidepost = guidepost;
 	}
 
 }
