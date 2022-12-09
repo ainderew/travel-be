@@ -1,6 +1,8 @@
 package com.cituccs.sims.Entity;
 
 
+import javax.persistence.Column;
+
 //import java.util.Set;
 
 //import javax.persistence.CascadeType;
@@ -21,6 +23,7 @@ public class GuidepostEntity {
 	private int guidepostid;
 	
 	private String title;
+	@Column(columnDefinition="TEXT")
 	private String content;
 	private String photo;
 	private boolean isdeleted;
