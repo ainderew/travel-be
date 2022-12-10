@@ -28,6 +28,9 @@ public class GuidepostEntity {
 	private String photo;
 	private boolean isdeleted;
 	private String location;
+	private Integer views;
+	@Column(columnDefinition="TEXT")
+	private String dateposted;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
@@ -35,13 +38,14 @@ public class GuidepostEntity {
 	
 	public GuidepostEntity() {}
 
-	public GuidepostEntity(int guidepostid, String title, String content, String photo, boolean isdeleted, UserEntity user, String location) {
+	public GuidepostEntity(int guidepostid, String title, String content, String photo, boolean isdeleted, UserEntity user, String location, String dateposted) {
 		super();
 		this.guidepostid = guidepostid;
 		this.title = title;
 		this.content = content;
 		this.isdeleted = isdeleted;
 		this.location = location;
+		this.dateposted = dateposted;
 		this.user = user;
 	}
 
@@ -99,6 +103,21 @@ public class GuidepostEntity {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public Integer getViews() {
+		return views;
+	}
+
+	public void setViews(Integer views) {
+		this.views = views;
+	}
+	public String getDatePosted() {
+		return dateposted;
+	}
+
+	public void setDatePosted(String dateposted) {
+		this.dateposted = dateposted;
 	}
 
 }

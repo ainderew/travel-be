@@ -65,6 +65,18 @@ public class GuidepostService {
 		}
 	}
 	
+	public Integer addViewToGuidepost(Integer guidepostId) {
+		return grepo.addViewToGuidepost(guidepostId);
+	}
+	
+	public Integer setGuidepostActive(Integer guidepostId) {
+		return grepo.setGuidepostActive(guidepostId);
+	}
+	
+	public Integer setGuidepostDelete(Integer guidepostId) {
+		return grepo.setGuidepostDelete(guidepostId);
+	}
+	
 	//Delete
 		public String deleteGuidepost(int guidepostid) {
 			String msg;

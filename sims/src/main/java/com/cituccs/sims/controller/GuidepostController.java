@@ -49,6 +49,18 @@ public class GuidepostController {
 		return gpserv.findSimilarTitle(title);
 	}
 	
+	//native query andrew mga pre ni don't delete
+		@PutMapping("/deleteGuidepost")
+		public Integer setGuidepostDelete(@RequestParam Integer title){
+			return gpserv.setGuidepostDelete(title);
+	}
+
+	//native query andrew mga pre ni don't delete
+		@PutMapping("/activateGuidepost")
+		public Integer activateGuidepost(@RequestParam Integer title){
+			return gpserv.setGuidepostActive(title);
+	}
+	
 	@GetMapping("/getGuidepost")
 	public GuidepostEntity findById(@RequestParam int guidepostid) { 
 		return gpserv.findById(guidepostid);
@@ -67,9 +79,14 @@ public class GuidepostController {
 	};
 	
 	//delete record
+	//dont' use
 	@DeleteMapping("/deleteGuidepost/{guidepostid}")
 	public String deleteGuidepost(@PathVariable int guidepostid) {
 		return gpserv.deleteGuidepost(guidepostid);
 	}
-		
+	
+	@PutMapping("/addView")
+		public Integer addView(@RequestParam Integer guidepostId) {
+		return gpserv.addViewToGuidepost(guidepostId);
+	}
 }

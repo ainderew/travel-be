@@ -37,21 +37,8 @@ public class UserController {
 		return userv.insertUser(user);
 	}
 	
-	@GetMapping("/displayAllUser")
-	public List<UserEntity> getAllUser(){
-		return userv.getAllUser();
-	}
-	
-//	@GetMapping("/getByUserId")
-//	public UserEntity findById(@RequestParam int Userid) {
-//		return fserv.findById(Userid);
-//	}
-	
-	@PutMapping("/putUser")
-	public UserEntity putUser(@RequestParam String username,@RequestBody UserEntity newUserDetails) throws Exception{
-		return userv.putUser(username, newUserDetails);
-	}
-	
+		
+
 	@DeleteMapping("/deleteUser/{username}")
 	public String deleteStudent(@PathVariable String username){
 		return userv.deleteUser(username);

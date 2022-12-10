@@ -46,10 +46,6 @@ public class UserService {
 		return urepo.save(user);
 	}
 	
-	public List<UserEntity> getAllUser(){
-		return urepo.findAll();
-	}
-
 	public UserEntity getUser(UserEntity user){
 		String uName = user.getUsername();
 		return urepo.findById(uName).get();
