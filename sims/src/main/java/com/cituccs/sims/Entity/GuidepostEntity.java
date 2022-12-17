@@ -24,7 +24,7 @@ public class GuidepostEntity {
 	
 	private String title;
 	@Column(columnDefinition="TEXT")
-	private String content;
+	private String content;	
 	private String photo;
 	private boolean isdeleted;
 	private String location;

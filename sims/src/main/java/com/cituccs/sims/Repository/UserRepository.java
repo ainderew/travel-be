@@ -8,6 +8,7 @@ import com.cituccs.sims.Entity.UserEntity;
 @Repository
 public interface UserRepository  extends  JpaRepository<UserEntity, String>{
 	
-//	UserEntity findByUsername(String username);
+	UserEntity findByUsername(String username);
+
 }
 

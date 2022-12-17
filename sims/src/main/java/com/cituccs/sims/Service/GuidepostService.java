@@ -42,6 +42,10 @@ public class GuidepostService {
 		return grepo.findAllGuides();
 	}
 	
+	public List<GuidepostEntity> findAvailabledGuides(){
+		return grepo.findAvailabledGuides();
+	}
+	
 	public List<GuidepostEntity> findSimilarTitle(String title){
 		return grepo.findByLikeTitle(title);
 	}
@@ -76,6 +80,7 @@ public class GuidepostService {
 	public Integer setGuidepostDelete(Integer guidepostId) {
 		return grepo.setGuidepostDelete(guidepostId);
 	}
+	
 	
 	//Delete
 		public String deleteGuidepost(int guidepostid) {

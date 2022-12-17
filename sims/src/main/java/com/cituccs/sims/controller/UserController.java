@@ -1,6 +1,7 @@
 package com.cituccs.sims.controller;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cituccs.sims.Entity.FavoritesEntity;
+import com.cituccs.sims.Entity.GuidepostEntity;
 import com.cituccs.sims.Entity.UserEntity;
 import com.cituccs.sims.Service.UserService;
 
@@ -44,7 +47,7 @@ public class UserController {
 		return userv.deleteUser(username);
 	}
 	
-		@GetMapping("/getUser")
+	@GetMapping("/getUser")
 	public UserEntity findByUsername(@RequestParam String username) {
 		return userv.findByUsername(username);
 	}
@@ -52,20 +55,29 @@ public class UserController {
 	@PostMapping("/loginUser")
 	public UserEntity loginUser(@RequestBody UserEntity user){
 		UserEntity rUser = userv.getUser(user);
-		
 		String inputPassword = user.getPassword();
-		
 		String dbPassword = rUser.getPassword();
+		boolean stat = rUser.isBanned();
 		
-		
-		if(!dbPassword.equals(inputPassword)){
+		if(!dbPassword.equals(inputPassword) || stat){
 			throw new Error("NO USER");
 		}
-		
-			
 		return rUser;
+	}
 	
-
+	@GetMapping("/getAllUser")
+	public List<UserEntity> getAllUser(){
+		return userv.getAllUser();
+	}
+	
+	@PutMapping("/toggleActive")
+	public UserEntity toggleActive(@RequestParam UserEntity username){
+		return userv.toggleStatActive(username);
+	}
+	
+	@PutMapping("/toggleInactive")
+	public UserEntity toggleInactive(@RequestParam UserEntity username){
+		return userv.toggleStatInactive(username);
 	}
 
 }

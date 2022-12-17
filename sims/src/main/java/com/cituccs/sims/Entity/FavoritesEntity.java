@@ -28,7 +28,7 @@ public class FavoritesEntity {
 	
 	public FavoritesEntity() {}
 
-	public FavoritesEntity(int favoriteid, boolean status, UserEntity user/*, GuidepostEntity guidepostid */) {
+	public FavoritesEntity(int favoriteid, boolean status, UserEntity user, GuidepostEntity guidepostid) {
 		super();
 		this.favoriteid = favoriteid;
 		this.status = status;

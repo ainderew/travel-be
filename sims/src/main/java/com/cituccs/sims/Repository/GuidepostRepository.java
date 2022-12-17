@@ -20,6 +20,9 @@ public interface GuidepostRepository extends JpaRepository<GuidepostEntity, Inte
 	@Query(value ="SELECT * FROM tbl_guidepost ORDER BY guidepostid DESC", nativeQuery = true)
 	List<GuidepostEntity> findAllGuides();
 	
+	@Query(value ="SELECT * FROM tbl_guidepost WHERE isdeleted=0 ORDER BY guidepostid DESC", nativeQuery = true)
+	List<GuidepostEntity> findAvailabledGuides();
+	
 	@Query(value ="SELECT * FROM tbl_guidepost WHERE title LIKE %?1%", nativeQuery = true)
 	List<GuidepostEntity> findByLikeTitle(String title);
 	
