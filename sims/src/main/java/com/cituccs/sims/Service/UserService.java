@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cituccs.sims.Entity.FavoritesEntity;
+import com.cituccs.sims.Entity.GuidepostEntity;
 import com.cituccs.sims.Entity.UserEntity;
 import com.cituccs.sims.Repository.UserRepository;
 
@@ -55,12 +57,18 @@ public class UserService {
 		return urepo.findById(username).get();
 	}
 	
-//	public UserEntity findById(int id) {
-//		if(srepo.findByFirstname(firstname) !=null)
-//			return srepo.findByFirstname(firstname);
-//		else
-//			return null;
-//	}
-
-
+	public List<UserEntity> getAllUser(){
+		return urepo.findAll();
+	}
+	
+	public UserEntity toggleStatInactive(UserEntity username){
+		username.setBanned(false);
+		return urepo.save(username);
+	}
+	
+	public UserEntity toggleStatActive(UserEntity username){
+		username.setBanned(true);
+		return urepo.save(username);
+	}
+	
 }

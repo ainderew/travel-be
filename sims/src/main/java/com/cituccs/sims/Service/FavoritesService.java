@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cituccs.sims.Entity.FavoritesEntity;
+import com.cituccs.sims.Entity.GuidepostEntity;
 import com.cituccs.sims.Entity.UserEntity;
 import com.cituccs.sims.Repository.FavoritesRepository;
 
@@ -56,12 +57,32 @@ public class FavoritesService {
 			return null;
 	}
 
+	public FavoritesEntity toggleFavorite(UserEntity username, GuidepostEntity guidepostid){
+		FavoritesEntity favorites = new FavoritesEntity();
+		
+		if(frepo.findByUserAndGuidepostid(username, guidepostid)!=null) {
+			favorites = frepo.findByUserAndGuidepostid(username, guidepostid);
+			favorites.setStatus(!favorites.isStatus());
+			return frepo.save(favorites);
+		}else {
+			favorites.setStatus(true);
+			favorites.setUser(username);
+			favorites.setGuidepostid(guidepostid);
+			return frepo.save(favorites);
+		}
+	}
 	
-//	public FavoritesEntity findById(int id) {
-//		if(srepo.findByFirstname(firstname) !=null)
-//			return srepo.findByFirstname(firstname);
-//		else
-//			return null;
-//	}
+	public FavoritesEntity findFavorite(UserEntity user, GuidepostEntity guidepostid) {
+		if(frepo.findByUserAndGuidepostid(user, guidepostid)!=null)
+			return frepo.findByUserAndGuidepostid(user, guidepostid);
+		else return null;
+	}
+	
+	public List<FavoritesEntity> findByUserAndStatus(UserEntity username){
+		if(frepo.findByUserAndStatus(username, true) !=null)
+			return frepo.findByUserAndStatus(username, true);
+		else
+			return null;
+	}
 
 }

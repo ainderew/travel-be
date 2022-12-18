@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cituccs.sims.Entity.FavoritesEntity;
+import com.cituccs.sims.Entity.GuidepostEntity;
 import com.cituccs.sims.Entity.UserEntity;
 import com.cituccs.sims.Service.FavoritesService;
 import com.cituccs.sims.Service.UserService;
@@ -27,7 +28,9 @@ public class FavoritesController {
 
 	@Autowired
 	FavoritesService fserv;
+	@Autowired
 	UserService userv;
+	
 	@GetMapping("/print")
 	public String printHello() {
 		return "Hello, User!";
@@ -43,11 +46,6 @@ public class FavoritesController {
 		return fserv.getAllFavorites();
 	}
 	
-//	@GetMapping("/getByFavoriteId")
-//	public FavoritesEntity findById(@RequestParam int favoriteid) {
-//		return fserv.findById(favoriteid);
-//	}
-	
 	@PutMapping("/putFavorites")
 	public FavoritesEntity putFavorites(@RequestParam int id,@RequestBody FavoritesEntity newFavoriteDetails) throws Exception{
 		return fserv.putFavorites(id, newFavoriteDetails);
@@ -58,10 +56,25 @@ public class FavoritesController {
 		return fserv.deleteFavorites(id);
 	}
 	
+	@GetMapping("/getAllUserFavorites")
+	public List<FavoritesEntity> findByUsername(@RequestParam UserEntity username){
+		return fserv.findByUsername(username);
+	}
+	
+	
+	
+	@PutMapping("/toggleFavorite")
+	public FavoritesEntity toggleFavorite(@RequestParam UserEntity username, GuidepostEntity guidepostid){
+		return fserv.toggleFavorite(username, guidepostid);
+	}
+	
+	@GetMapping("/getFavorite")
+	public FavoritesEntity findFavorite(@RequestParam UserEntity username, GuidepostEntity guidepostid){
+		return fserv.findFavorite(username, guidepostid);
+	}
+	
 	@GetMapping("/getUserFavorites")
-	public List<FavoritesEntity> findByUsername(@RequestParam String username){
-		UserEntity user = new UserEntity();
-		user = userv.findByUsername(username);
-		return fserv.findByUsername(user);
+	public List<FavoritesEntity> findByUserAndStatus(@RequestParam UserEntity username){
+		return fserv.findByUserAndStatus(username);
 	}
 }

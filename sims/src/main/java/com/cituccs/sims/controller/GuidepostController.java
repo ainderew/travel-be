@@ -38,6 +38,11 @@ public class GuidepostController {
 		return gpserv.getAllGuidepost();
 	}
 	
+	@GetMapping("/findAvailabledGuides")
+	public List<GuidepostEntity> findAvailabledGuides(){
+		return gpserv.findAvailabledGuides();
+	}
+	
 	//native query andrew mga pre ni don't delete
 	@GetMapping("/findAllGuides")
 	public List<GuidepostEntity> findAllGuides(){
