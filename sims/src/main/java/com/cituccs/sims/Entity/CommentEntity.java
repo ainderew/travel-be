@@ -16,6 +16,7 @@ public class CommentEntity {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int commentId;
 	private String comment;
+	private String date;
 
 	
 //Connect when we have guidePost entity
@@ -70,5 +71,14 @@ public class CommentEntity {
 	public void setGuidepost(GuidepostEntity guidepost) {
 		this.guidepost = guidepost;
 	}
+	
+	public String getDatePosted() {
+		return date;
+	}
+
+	public void setDatePosted(String date) {
+		this.date = date;
+	}
+
 
 }

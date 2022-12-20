@@ -79,5 +79,9 @@ public class UserController {
 	public UserEntity toggleInactive(@RequestParam UserEntity username){
 		return userv.toggleStatInactive(username);
 	}
-
+	@PutMapping("/editUser")
+	public UserEntity editUser(@RequestBody UserEntity user)throws Exception{
+		return userv.putUser(user);
+	}
+	
 }

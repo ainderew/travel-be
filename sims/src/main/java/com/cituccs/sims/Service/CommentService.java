@@ -52,4 +52,12 @@ public class CommentService {
 			return "Error";
 		}
 	}
+	
+	public List<CommentEntity> getAllGuideComments(Integer guidepostId){
+		try {
+			return crepo.findGuideComments(guidepostId);
+		}catch(NoSuchElementException err) {
+			throw err;
+		}
+	}
 }

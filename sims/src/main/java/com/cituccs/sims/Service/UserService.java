@@ -17,16 +17,13 @@ public class UserService {
 	@Autowired
 	UserRepository urepo;
 	
-	public UserEntity putUser(String username, UserEntity newUserDetails) throws Exception{
-		UserEntity user = new UserEntity();
-		
+	public UserEntity putUser(UserEntity user) throws Exception{
 		try {
-			user = urepo.findById(username).get();
-			user.setPassword(newUserDetails.getPassword());
-			user.setName(newUserDetails.getName());
-			user.setPhoneNumber(newUserDetails.getPhoneNumber());
-			user.setEmail(newUserDetails.getEmail());
-			return urepo.save(user);
+			UserEntity e_User = urepo.findById(user.getUsername()).get();
+			e_User.setName(user.getName());
+			e_User.setPhoneNumber(user.getPhoneNumber());
+			e_User.setEmail(user.getEmail());
+			return urepo.save(e_User);
 		}catch(NoSuchElementException nex) {
 			throw new Exception("Username "+ user +" does not exist!");
 		}

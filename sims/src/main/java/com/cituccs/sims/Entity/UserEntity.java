@@ -16,6 +16,7 @@ public class UserEntity {
 	private String name;
 	private String phoneNumber;
 	private String email;
+	private Boolean isAdmin;
 	private boolean isBanned;
 	
 	
@@ -23,7 +24,7 @@ public class UserEntity {
 
 
 	public UserEntity(String username, String password, String name, String phoneNumber, String email,
-			boolean isBanned, String profileImage) {
+			boolean isBanned, String profileImage, boolean isAdmin) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -32,6 +33,7 @@ public class UserEntity {
 		this.email = email;
 		this.isBanned = isBanned;
 		this.profileImage = profileImage;
+		this.isAdmin = isAdmin;
 	}
 
 
@@ -100,6 +102,14 @@ public class UserEntity {
 	
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
+	}
+	
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+	
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }

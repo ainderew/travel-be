@@ -37,6 +37,11 @@ public class CommentController {
 		return "Error";
 	}
 	
+	@PostMapping("/getPostComments/{guidepostId}")
+	public List<CommentEntity> getAllGuideComments(@PathVariable int guidepostId){
+		return cserv.getAllGuideComments(guidepostId);
+	}
+	
 	@GetMapping("/getAllComments")
 	public List<CommentEntity> getAllComments(){
 		return cserv.getAllComments();
